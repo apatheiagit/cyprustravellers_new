@@ -2,12 +2,12 @@
 @font-family: 'Open Sans', sans-serif;
 @text-color: #231f20;
 @super-light-text: #ccc;
-@light-text: #898989;
-@grey-text: #959595;
+@light-text: #969696;
+@grey-text: #363636;
 @link: #0aaf5f;
 @light-link: #00b550;
 @input-border: #e1e1e1;
-@grey-fon: #fafafb;
+@grey-fon: #f3f3f3;
 @almost-white: #f6f6f6;
 @grey: #d7d7d7;
 @light-grey: #ebebeb;
@@ -23,24 +23,35 @@
 @mobile: ~"(max-width: 768px)";
 @tablet: ~"(min-width: 768px) and (max-width: 992px)";
 @mobile_tablet: ~"(max-width: 992px)";
+@small-font: 12px;
 
 
 
-body { background: #FFF; font-family: @font-family; font-size: @basic-font; font-weight: 400; color: @text-color;}
+body { background: @grey-fon; font-family: @font-family; font-size: @basic-font; font-weight: 400; color: @text-color;}
 h1,h2,h3,h4,h6,h6,p,ul,li {margin: 0; padding:0px; }
 a, a:hover { color: inherit;}
 
 .somit-header{
+	background: white;
 	& .upper-header{
 		border-bottom: 1px solid @almost-white;
 		height: 53px;
 		padding-top: 15px;
 	}
 	& .top-logo{
-		display: block;
-		width: 213px;
-		@media @mobile_tablet{
-			margin: 10px auto;
+		display: block;		
+		margin: 14px auto;
+		@media @tablet{
+			& img{
+				width: 100%;
+			}
+		}
+		@media @mobile{
+			max-width: 170px;
+			text-align: center;
+			& img{
+				width: 100%;
+			}
 		}
 	}
 	& .city-filter{
@@ -75,7 +86,7 @@ a, a:hover { color: inherit;}
 			}
 			& ul li{
 				list-style: none;
-				font-size: 12px;
+				font-size: @small-font;
 				padding: 2px 4px;
 				&:hover{
 					background: lighten(@super-light-text, 10%);
@@ -109,25 +120,33 @@ a, a:hover { color: inherit;}
 		
 	
 	& .bottom-header{
-		clear: both;
+		clear: both;   
+		margin-top: 8px;
 		& .search-block{
+			border-left: 1px solid @almost-white;
 			float: right;
 			margin-top: 20px;
-			width: 20px;
+			padding-left: 17px;
+			padding-top: 1px;
+			@media @mobile_tablet{
+				margin-top: 5px;
+			}
 			& .icon{
+				background: url(../img/bg-search.png) no-repeat right top;
 				cursor: pointer;
 			}
 		}
 		& .menu{
-			min-height: 55px;
-			margin-right: 40px;
-			padding-top: 16px;
+			min-height: 45px;
+			padding-top: 22px;
+			@media @mobile_tablet{
+				padding-top: 0;
+			}			
 			& ul{
 				& li{
 					color: @text-color;
-					font-size: 25px;
-					font-weight: 200;
-					margin-right: 10px;					
+					font-size: 15px;
+					font-weight: 600;				
 					text-transform: uppercase;
 					&.active-trial:nth-child(1) { color: @orange;}
 					&.active-trial:nth-child(2) { color: @blue;}
@@ -136,55 +155,38 @@ a, a:hover { color: inherit;}
 					&.active-trial:nth-child(5) { color: @yellow;}
 					&.active-trial:nth-child(6) { color: @text-color;}
 					@media @mobile_tablet{
-						font-size: 20px;
-						margin-right: 0px;
+						font-size: 13px;
 					}
 					& a{
-						border: 1px solid transparent;
-						border-radius: 3px;
-						padding: 4px 14px;						
+						padding: 4px 10px;						
 						@media @mobile_tablet{
 							padding: 4px 10px;
 						}
 						&:hover, &.hover{
-							border: 1px solid #c7c4c6;
+							color: @grey-text;
 							text-decoration: none;
 						}
-					}
-					& ul{
-						border: 1px solid #c7c4c6;
-						border-radius: 3px;
-						background: #f8f8f8;
-						margin-top: 1px;
-						padding: 2px 0;
-						& li{
-							font-weight: 300;
-							font-size: 14px;
-							@media @mobile_tablet{
-								font-size: 12px;
-							}
-							& a{
-								border: none;
-								padding: 2px 12px;
-								@media @mobile_tablet{
-									padding: 2px 9px;
-								}
-								&:hover{
-									border: none;
-									color: @orange;
-								}
-							}
-						}
-					}
+					}					
 				}
 			}
 		}
 	}
 }
 & .soc-block{
-	overflow: hidden;
-  float: right;
-  padding-top: 5px;
+	overflow: hidden;  
+  .somit-header &{
+  	float: right;
+  	padding-top: 5px;
+  }
+  .somit-footer &{
+  	padding-top: 16px;
+  }
+  & .title{
+  	font-size: @small-font;
+  	font-weight: 600;
+  	margin-bottom: 20px;
+  	text-transform: uppercase;
+  }
 	& a{
 		background-image: url(../img/bg-social.png);
 		background-repeat: no-repeat;
@@ -204,51 +206,78 @@ a, a:hover { color: inherit;}
 		}
 	}
 }
+.block-simplenews{
+	margin-top: 30px;
+	& .title{
+		font-size: 24px;
+	}
+	& .description{
+		color: @light-text;
+		margin: 15px 0;
+	}
+	& .form-item{
+		float: left;
+		width: 80%;
+		& input{
+			border: 1px solid @super-light-text;
+			font-size: 14px;
+			height: 36px;
+			padding: 6px 10px;
+			width: 100%;
+		}
+	}
+	& .form-submit{
+		background: url(../img/bg-subscribe.png) no-repeat center @grey-text;
+		border: none;
+		height: 36px;
+		width: 20%;
+	}
+}
 .somit-footer{
-	color: @light-text;
-	font-size: 14px;
+	color: @grey-text;
+	font-size: @small-font;
 	font-weight: 300;
 	& .container{
-		border-top: 2px solid @light-grey;
-		margin-top: 30px;
-		padding-top: 35px;
-		padding-bottom: 35px;
+		background: white;
+		margin-top: 7px;
+		padding-top: 40px;
+		padding-bottom: 40px;
 	}
 	& .bottom-logo{
-		padding-bottom: 20px;
+		padding-bottom: 25px;
 		display: block;
-	    margin: 0 auto;
-	    max-width: 261px;
+    margin: 0 auto;
+    @media @mobile{
+    	max-width: 172px;
+    	text-align: center;
+    }
 	}
 	& .menu{
 		overflow: hidden;
-		padding-top: 25px;
+		padding-top: 16px;
 		& ul{
 			& li{
-				font-size: 20px;
-				font-weight: 200;
-				margin-right: 25px;					
+				font-size: 12px;
+				font-weight: 600;
+				margin-right: 15px;					
 				text-transform: uppercase;
 				& a{					
 					color: @text-color;					
 					&:hover{
 						text-decoration: underline;
 					}
-				}
-				@media @mobile{
-					font-size: 17px;
-					margin-right: 15px;
-				}
+				}				
 			}
 		}
 	}
 	& .bottom-descr{
-		padding-bottom: 15px;
+		padding-bottom: 20px;
 	}
-	& .bottom-rights{
-		padding-bottom: 15px;
-		& a{
-			text-decoration: underline;
+	& .bottom-text{		
+		margin-top: 84px;
+		@media @mobile_tablet{
+			margin-top: 20px;
+			text-align: right;
 		}
 	}
 	& .copyright{
@@ -624,7 +653,7 @@ a, a:hover { color: inherit;}
 	margin: 0 0 20px 0;
 }
 .breadcrumbs{
-	font-size: 12px;
+	font-size: @small-font;
 	margin: 5px 0 20px;
 	text-transform: uppercase;
 	& span{
