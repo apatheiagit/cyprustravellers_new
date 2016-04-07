@@ -1,5 +1,6 @@
 @basic-font: 16px;
 @font-family: 'Open Sans', sans-serif;
+@special-font: 'Bitter', serif;
 @text-color: #231f20;
 @super-light-text: #ccc;
 @light-text: #969696;
@@ -285,36 +286,137 @@ a, a:hover { color: inherit;}
 		padding-top: 32px;
 	}	
 }
+.align-center{
+	text-align: center;
+}
+.title-head{	
+	font-family: @special-font;
+	font-size: 28px;
+	font-weight: normal;
+	margin: 10px 0;
+	padding: 10px 0;
+}
+.white-container{
+	background: @white;
+}
+.owl-carousel{
+	position: relative;
+	& .owl-controls{
+		position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -70px;
+		text-align: center;
+		& .owl-dot {
+	    display: inline-block;
+			& span {
+		    border: 1px solid black;	    
+		    border-radius: 50%;
+		    display: block;
+		    height: 9px;
+		    margin: 7px 7px 8px;
+		    width: 9px;
+		  }
+		  &.active{
+		  	& span{
+					background: black;
+		  	}
+		  }
+		}
+	}
+}
+.article-text{
+	&--center{
+		text-align: center;
+	}
+	&--left{
+		text-align: left;
+	}
+	&--right{
+		text-align: right;
+	}
+}
+.articles{
+	&--index{
+
+	}
+}
 .article-item{
 	position: relative;
 	&--index{
 		background: none !important;
 		text-align: left !important;
 		padding: 0 !important;
-		margin-bottom: 30px;
-		& .article-photo{
-			display: block !important;
-			margin: 0 !important;
+		overflow: hidden;	
+		height: 535px;
+		max-width: 100%;
+		@media @tablet{
+			height: 350px;
 		}
-		& .article-text{
-			background: url(../img/bg-article-overlay.png) repeat-x left bottom;
-			bottom: 0;
+		@media @mobile {
+			height: 250px;
+		}
+		& .article-photo{
+			width: 1920px;
+	    position: absolute;
+	    left: 50%;
+	    top: 0;
+	    margin-left: -960px;
+	    z-index: 2;
+	    @media @tablet{
+				top: -30%;
+			}
+			@media @mobile {
+				top: -50%;
+			}
+			& img{
+				display: block;
+				margin: 0 auto;
+			}
+		}
+		& .article-text{			
 			color: @white;
 			padding: 15px 30px;
 			position: absolute;
+			top: 0;
 			width: 100%;
+			z-index: 2;
 		}
 		& .article-title{
-			font-size: 28px;
-			line-height: 30px;
-			max-width: 575px;
+			& a{
+				&:hover, &:active{					
+					text-decoration: none;
+				}
+			}
+			& .big{
+				border-bottom: 1px solid transparent;
+				display: inline-block;
+				font-size: 60px;
+				line-height: 1.2;
+				&:hover{
+					border-bottom: 1px solid @white;
+				}
+				@media @tablet{
+					font-size: 40px;
+				}
+				@media @mobile{
+					font-size: 24px;
+				}
+			}
+			& .small{
+				font-size: 22px;
+				font-family: @font-family;
+				@media @mobile{
+					font-size: 18px;
+				}
+			}
 		}
 		& .stat .count{
 			color: @white;
 		}
 	}
 	& .article-title{
-		font-family: 'Arvo';	
+		font-family: @special-font;	
 	}
 	&--basic{
 		height: 370px;
@@ -501,7 +603,8 @@ a, a:hover { color: inherit;}
 }
 .article-type{
 	display: inline-block;
-	font-size: 14px;
+	font-size: 10px;
+	letter-spacing: 2px;
 	margin: 10px 0 7px;
 	text-transform: uppercase;
 	.article-item--special &{
@@ -918,4 +1021,13 @@ a, a:hover { color: inherit;}
   src: url("fonts/arvo/arvo-regular.eot?#iefix")format("embedded-opentype"),
   url("fonts/arvo/arvo-regular.woff") format("woff"),
   url("fonts/arvo/arvo-regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/bitter/bitter-regular/BitterRegular.eot");
+  src: url("fonts/bitter/bitter-regular/BitterRegular.eot?#iefix")format("embedded-opentype"),
+  url("fonts/bitter/bitter-regular/BitterRegular.woff") format("woff"),
+  url("fonts/bitter/bitter-regular/BitterRegular.ttf") format("truetype");
 }
