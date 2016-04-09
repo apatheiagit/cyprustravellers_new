@@ -40,6 +40,40 @@ $(function(){
     items: 1,
     loop: true,
   });
+  $('.affiche-carousel').owlCarousel({
+    items: 1,
+    loop: true,
+  });
+  $('.city-selector .arrow-right').click(function(){
+    var old_current = $(this).parent().find('.current');
+    var new_current = old_current.next();
+    if(new_current.length){
+      old_current.removeClass('current');
+      new_current.addClass('current');
+      var city = new_current.attr('data-city');
+      $('.city-places').each(function(){
+        if ($(this).hasClass(city)){
+           $('.city-places').removeClass('current');
+           $(this).addClass('current');
+        }
+      })
+    }    
+  });
+  $('.city-selector .arrow-left').click(function(){
+    var old_current = $(this).parent().find('.current');
+    var new_current = old_current.prev();
+    if(new_current.length){
+      old_current.removeClass('current');
+      new_current.addClass('current');
+      var city = new_current.attr('data-city');
+      $('.city-places').each(function(){
+        if ($(this).hasClass(city)){
+           $('.city-places').removeClass('current');
+           $(this).addClass('current');
+        }
+      })
+    }    
+  })
 })
 function getWeather(city){		
 	$.ajax({
